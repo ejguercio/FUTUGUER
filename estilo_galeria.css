@@ -1,0 +1,479 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'MiNuevaFuente';
+    src: url("recursos//Raleway.ttf");
+}
+
+html {
+    height: 100%;
+}
+
+#agrupar {
+    display: grid;
+    grid-template:
+        "header" 200px
+        "navbar" 82px
+        "seccion" auto
+        "footer" auto;
+    max-width: 990px;
+    margin: auto;
+    text-align: center;
+    box-shadow: #000000 0px 3px 15px;
+    background-color: #ffffff;
+}
+
+
+#cabecera {
+    grid-area: header;
+    background: url("recursos//banner.jpg") no-repeat;
+    background-position: center;
+    background-size: 240px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+/* --------------------------BARRA NAVEGACION----------------------------------------*/
+#menu {
+    grid-area: navbar;
+    height: 90px;
+    background: linear-gradient(to top, #F39200, #ffffff);
+    border-radius: 10px;
+    padding: 15px 22px;
+    text-align: center;
+    box-shadow: rgb(150, 150, 150) 0px 3px 5px;
+}
+
+#menu ul {
+    min-width: 520px;
+    list-style: none;
+}
+
+#menu ul li {
+    display: inline-block;
+    width: 158px;
+    margin: auto 3px;  
+}
+
+#menu ul li a {
+    background-color: #646363;
+    padding: 17px 10px;
+    color: #ffffff;
+    display: block;
+    /*hace que link tome todo el espacio del boton de la lista*/
+    text-decoration: none;
+    font: bold 24px MiNuevaFuente, sans-serif;
+    border-radius: 3px 3px 15px 15px;
+    box-shadow: rgb(150, 150, 150) -4px 4px 5px;
+}
+
+#menu ul li a:hover {
+    box-shadow: black -5px 5px 4px;
+    transform: translate(2px);
+    color: #030000;
+}
+
+/* --------------------------CONTENIDO CUERPO----------------------------------------*/
+
+body {
+    background: #646363;
+    text-align: center;
+    min-height: 100%;
+    font-size: 18px;
+    font-family: MiNuevaFuente, sans-serif;
+}
+
+section h2 {
+    font-size:  35px;
+    font-weight: 750;
+    text-align: center;
+    padding: 10px 15px 15px 15px;
+    margin-bottom: 10px;
+    color: #646363;
+    letter-spacing: 3px;
+    animation: move linear 2000ms infinite;
+}
+
+/*Animación para rotar las sombras*/
+@keyframes move {
+    0% {
+        text-shadow:
+            -1px 1px 0.4px #000000;
+    }
+
+    25% {
+        text-shadow:
+            -1px 1px 0.8px #000000;
+    }
+
+    50% {
+        text-shadow:
+            -1px 1px 1.1px #000000;
+    }
+
+    75% {
+        text-shadow:
+            -1px 1px 1.4px #000000;
+    }
+
+    100% {
+        text-shadow:
+            -1px 1px 1.6px #000000;
+    }
+}
+.logo_titulos{
+    margin-top: 10px;
+}
+#seccion_galeria {
+    grid-area: seccion;
+    margin: 20px 10px 10px 10px;
+    padding: 10px;
+    background-color: rgb(200, 220, 235);
+    border-radius: 10px;
+    box-shadow: rgb(150, 150, 150) -2px 3px 5px;
+}
+
+.linea {
+    background: linear-gradient(to top, #F39200, #ffffff);
+    height: 5px;
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    box-shadow: #646363 3px -3px 5px;
+    padding: 8px;
+    margin: 15px 0px;
+}
+
+.titulos_obras {
+    font: bold 33px MiNuevaFuente;
+    text-align: center;
+    padding: 5px;
+    color: #646363;
+    letter-spacing: 4px;
+    text-shadow: -1px -2px 1px #000000;
+
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 95%;
+    margin: auto;
+    grid-gap: 10px;
+    padding: 20px 0px;
+    overflow: hidden;
+}
+
+.galeria>a {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    height: auto;
+}
+
+.galeria img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.galeria a:hover img {
+    filter: blur(0.8px);
+    transform: rotate(5deg) scale(1.1);
+}
+
+.light-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    transition: transform .3s ease-in-out;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+}
+
+.light-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.light-box:target {
+    transform: scale(1);
+}
+
+.close {
+    position: absolute;
+    background: #F39200;
+    color: black;
+    font: bold 30px MiNuevaFuente;
+    text-decoration: none;
+    top: 10vh;
+    right: 10vw;
+    height: 53px;
+    width: 53px;
+    text-align: center;
+    line-height: 53px;
+    border-radius: 50%;
+    box-shadow: #ffffff 1px 1px 5px;
+}
+
+.lado-i {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    left: 20%;
+    background-color: #F39200;
+    height: 53px;
+    width: 53px;
+    border-radius: 25%;
+    text-decoration: none;
+    box-shadow: #ffffff 1px 1px 5px;
+}
+.lado-i img{
+    padding: 3px; 
+}
+
+.lado-d {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    right: 20%;
+    background-color: #F39200;
+    height: 52px;
+    width: 52px;
+    border-radius: 25%;
+    text-decoration: none;
+    box-shadow: #ffffff 1px 1px 5px;
+}
+
+.lado-d img{
+    padding: 3px; 
+}
+
+
+/* --------------------------PIE DE PAGINA----------------------------------------*/
+footer {
+    grid-area: footer;
+    text-align: center;
+    color: #ffffff;
+    background-color: #353535;
+    width: 100%;
+}
+
+.agrupa_footer {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+}
+
+.contenedor_logo {
+    text-align: right;
+    width: auto;
+    height: auto;
+}
+
+.contenedor_logo img {
+    width: 250px;
+    height: 250px;
+}
+
+.contenedor_datos {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    width: auto;
+    height: auto;
+}
+
+.contenedor_datos span {
+    display: block;
+    color: #F39200;
+    text-shadow: -1px -2px 1px #000000;
+}
+
+.contenedor_datos a {
+    text-decoration: none;
+    color: #F39200;
+}
+
+.derechos {
+    display: block;
+    background-color: #1f1e1e;
+    padding: 5px;
+}
+
+/*vista celulares para flechas y cierre*/
+@media (max-width: 1680px) {
+    .close {
+        filter: opacity(0.5);
+    }
+
+    .lado-d {
+        filter: opacity(0.5);
+
+    }
+
+    .lado-i {
+        filter: opacity(0.5);
+    }
+}
+
+@media (max-width: 1024px) {
+    .close {
+        filter: opacity(0.5);
+    }
+
+    .lado-d {
+        top: 90%;
+
+    }
+
+    .lado-i {
+        top: 90%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: portrait) {
+    
+    #agrupar{
+        max-width: 960px;
+    }
+
+    #cabecera {
+        background-size: 250px;
+    }
+
+    section h2 {
+        font-size: 36px;
+    }
+
+    .titulos_obras{
+        font-size: 37px;
+    }
+    .close {
+        filter: opacity(0.6);
+        top: 33vh;
+        height: 77px;
+        width: 77px;
+        line-height: 74px;
+    }
+
+    .lado-d {
+        top: 63.3%;
+        height: 78px;
+        width: 78px;
+
+    }
+
+    .lado-i {
+        top: 63.3%;
+        height: 78px;
+        width: 78px;
+    }
+
+    .contenedor_datos {
+        font-size: 26px;
+    }
+
+    .derechos{
+        font-size: 21px;
+    }
+    /*agrandar barra navegacion */
+
+    #menu{
+        height: 110px;
+    }
+    #seccion_galeria {
+        margin: 40px 0px 10px 10px;
+    }
+    /*botones*/
+    #menu ul li {
+        width: 178px;
+    }
+
+    #menu ul li a {
+        padding: 25px 10px;
+        font: bold 26px MiNuevaFuente, sans-serif;
+    }
+
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 960px) and (orientation: landscape) {
+    
+    .light-box {
+        
+        width: 100%;
+        height: 100%;
+    }
+
+    .light-box img {
+        max-width: auto;
+        height: 100%;
+    }
+    
+    .close {
+        top:10%;
+        height: 60px;
+        width: 60px;
+        line-height: 60px;
+    }
+
+    .lado-d {
+        top: 80%;
+        height: 60px;
+        width: 60px;
+
+    }
+
+    .lado-i {
+        top: 80%;
+        height: 60px;
+        width: 60px;
+    }
+
+}
+@media (max-width: 800px) {
+    .close {
+        filter: opacity(0.5);
+    }
+
+    .lado-d {
+        top: 70%;
+
+    }
+
+    .lado-i {
+        top: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .close {
+        top: 35vh;
+
+    }
+
+    .lado-d {
+        filter: opacity(1);
+
+    }
+
+    .lado-i {
+        filter: opacity(1);
+    }
+}
